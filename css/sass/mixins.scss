@@ -21,3 +21,7 @@
 @mixin transition-account-nav {
   transition: transform .2s ease;
 }
+
+@mixin transition-general {
+  transition: all .25s cubic-bezier(.77,0,.175,1);
+}

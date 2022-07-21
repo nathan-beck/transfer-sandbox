@@ -1,0 +1,215 @@
+// Transfer window
+
+.transfer-window {
+  @include shadow-transfer-window;
+  background: $color-white;
+  border-radius: 10px;
+  width: 280px;
+  height: 410px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 80px;
+}
+
+.transfer-window__content {
+  width: 100%;
+  height: 338px;
+  overflow-y: auto;
+}
+
+// Uploader
+
+.uploader {
+  height: 120px;
+
+  &:hover,
+  &:focus {
+
+    .uploader-trigger__icon path {
+      fill: $color-primary-active;
+    }
+  }
+}
+
+.uploader-form {
+  display: none;
+}
+
+.uploader-trigger {
+  height: 100%;
+  position: relative;
+  padding-left: 66px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.uploader-trigger__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  width: 36px;
+  height: 36px;
+
+  path {
+    @include transition-general;
+    fill: $color-primary;
+  }
+}
+
+.uploader-trigger__subtitle {
+  @include transition-general;
+  text-decoration: underline;
+  font-size: $font-size-m;
+  color: $color-abbey;
+
+  &:hover,
+  &:focus {
+    color: $color-primary;
+  }
+}
+
+// Uploader fields
+.uploader-fields {
+  width: 100%;
+  padding: 0 10px;
+  border-top: 1px solid $color-iron;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.uploader-field {
+  position: relative;
+  height: 48px;
+
+  &:not(:first-child) {
+    border-top: 1px solid $color-iron;
+  }
+
+  label {
+    @include transition-general;
+    color: $color-oslo;
+    font-size: $font-size-m;
+    line-height: 20px;
+    position: absolute;
+    transform: translateY(14px);
+    left: 12px;
+    pointer-events: none;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 16px 20px 0 12px;
+    font-size: $font-size-m;
+    line-height: 20px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus + label,
+    &:not(:placeholder-shown) + label { // Little hack to stick the styling if input has value
+      font-size: $font-size-s;
+      transform: translateY(5px);
+    }
+  }
+
+  textarea {
+    @include transition-general;
+    font-family: inherit;
+    resize: none;
+    overflow: hidden;
+    padding-top: 22px;
+
+    &:not(:placeholder-shown):not(:focus) { // Another hack to stick the styling if textarea has value and is unfocused
+      padding-top: 16px;
+
+      & + label {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.uploader__message {
+  height: auto;
+  flex-grow: 1;
+  display: grid;
+
+  &::after {
+    // Weird space needed to preventy jumpy behavior
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+    font-size: $font-size-m;
+    padding: 16px 20px 12px 12px;
+  }
+  
+  & > textarea,
+  &::after {
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
+  }
+}
+
+// Advanced options
+
+.transfer-window__options {
+  @include transition-general;
+  background-color: $color-aqua;
+  border-top: 1px solid $color-iron;
+  display: none;
+
+  &.transfer-options--active {
+    display: block;
+  }
+}
+
+// Transfer window footer
+
+.transfer-window__footer {
+  width: 100%;
+  height: 72px;
+  border-top: 1px solid $color-iron;
+  padding: 0 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transfer-options-trigger {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+
+  &:hover,
+  &:focus {
+    path {
+      fill: $color-primary-active;
+    }
+  }
+
+  path {
+    fill: $color-primary;
+  }
+  
+  span {
+    display: none;
+  }
+}
+
+.transfer-button {
+  width: 160px;
+}

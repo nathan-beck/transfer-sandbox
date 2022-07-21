@@ -62,4 +62,49 @@ $(document).ready(function () {
       }
     }        
   });
+
+  // Transfer window options
+  const $transferOptionsTrigger = $('.transfer-options-trigger');
+  const $transferOptions = $('.transfer-window__options');
+  const $transferWindowContent = $('.transfer-window__content');
+  const $optionsSpeed = 500;
+
+  $transferOptionsTrigger.on('click', function() {
+    // Toggle active class
+    if($transferOptions.hasClass('transfer-options--active')) {
+      $transferWindowContent.animate( { scrollTop:0 }, $optionsSpeed);
+      setTimeout(function() {
+        $transferOptions.removeClass('transfer-options--active');
+      }, $optionsSpeed);
+    } else {
+      $transferOptions.addClass('transfer-options--active');
+      $transferWindowContent.animate( { 
+        scrollTop: $transferWindowContent.prop('scrollHeight')
+      }, $optionsSpeed);
+    }
+  });
+
+  // Hide options on click outside
+  $transferWindowContent.click(function(event) { 
+    var $target = $(event.target);
+    
+    // If you haven't clicked on the options
+    if(!$target.closest($transferOptions).length) {
+      // If options are active, deactivate
+      if($transferOptions.hasClass('transfer-options--active')) {
+        $transferWindowContent.animate( { scrollTop:0 }, $optionsSpeed);
+        setTimeout(function() {
+          $transferOptions.removeClass('transfer-options--active');
+        }, $optionsSpeed);
+      }
+    }        
+  });
+
+  // Custom scrollbars
+  const $scrollable = $('.scrollbar-content');
+
+  $scrollable.scrollbar({
+    "autoScrollSize": false,
+    "scrolly": $('.scrollbar-y')
+  });
 });

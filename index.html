@@ -62,15 +62,88 @@
     </ul>
   </nav>
 
-  <!-- Transfer window here -->
+  <!-- Transfer window -->
+
+  <div class="transfer-window scrollbar-wrapper">
+    <div class="scrollbar-y">
+      <div class="scroll-element_outer">
+          <div class="scroll-element_size"></div>
+          <div class="scroll-element_track"></div>
+          <div class="scroll-bar"></div>
+      </div>
+    </div>
+
+    <div class="transfer-window__content scrollbar-content">
+
+      <div class="uploader">
+        <form action="" id="uploader-form" class="uploader-form">
+          <input type="file" multiple>
+        </form>
+
+        <div class="uploader-trigger">
+          <svg class="uploader-trigger__icon" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <path d="M36.493 72C16.118 72 0 55.883 0 36.493 0 16.118 16.118 0 36.493 0 55.882 0 72 16.118 72 36.493 72 55.882 55.883 72 36.493 72zM34 34h-9c-.553 0-1 .452-1 1.01v1.98A1 1 0 0 0 25 38h9v9c0 .553.452 1 1.01 1h1.98A1 1 0 0 0 38 47v-9h9c.553 0 1-.452 1-1.01v-1.98A1 1 0 0 0 47 34h-9v-9c0-.553-.452-1-1.01-1h-1.98A1 1 0 0 0 34 25v9z" fill="#409fff" fill-rule="nonzero"></path>
+          </svg>
+          
+          <h2>Upload files</h2>
+          
+          <button class="uploader-trigger__subtitle">Or select a folder</button>
+        </div>
+      </div>
+
+      <div class="uploader-fields">
+        <div class="uploader-field uploader__recipients">
+          <input type="email" name="recipients" placeholder=" ">
+          <label for="recipients">Email to</label>
+        </div>
+
+        <div class="uploader-field uploader__sender uploader__sender--locked">
+          <input type="email" name="sender" placeholder=" ">
+          <label for="sender">Your email</label>
+        </div>
+
+        <div class="uploader-field uploader__title">
+          <input type="text" name="title" placeholder=" ">
+          <label for="title">Title</label>
+        </div>
+
+        <div class="uploader-field uploader__message">
+          <textarea type="text" name="message" placeholder=" " onInput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
+          <label for="message">Message</label>
+        </div>
+      </div>
+
+      <div class="transfer-window__options">
+        Options
+        <br>
+        <br>
+        <br>
+        lots of options
+        <br>
+        <br>
+        <br>
+        more options
+      </div>
+    </div>
+
+    <div class="transfer-window__footer">
+      <button class="transfer-options-trigger" aria-label="Advanced options">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM18 12C18 12.8284 17.3284 13.5 16.5 13.5C15.6716 13.5 15 12.8284 15 12C15 11.1716 15.6716 10.5 16.5 10.5C17.3284 10.5 18 11.1716 18 12ZM12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5ZM9 12C9 12.8284 8.32843 13.5 7.5 13.5C6.67157 13.5 6 12.8284 6 12C6 11.1716 6.67157 10.5 7.5 10.5C8.32843 10.5 9 11.1716 9 12Z" fill="#409FFF"/>
+        </svg>
+        <span>Advanced options</span>
+      </button>
+      <button class="button button--primary transfer-button" disabled>Transfer</button>
+    </div>
+  </div>
 
 
   <!-- Panel -->
 
   <div class="panel panel--half">
     <div class="panel-topbar">
-      <button type="button" class="panel-close">
-        <svg viewBox="0 0 24 24" aria-label="Close panel">
+      <button type="button" class="panel-close" aria-label="Close panel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path fill="#babcbf" fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10 10-4.477 10-10zm-10-1.414L9.875 8.46c-.38-.38-1.02-.386-1.41.004-.394.394-.393 1.023-.004 1.41L10.587 12 8.46 14.125c-.38.38-.386 1.02.004 1.41.394.394 1.023.393 1.41.004L12 13.413l2.125 2.125c.38.38 1.02.386 1.41-.004.394-.394.393-1.023.004-1.41L13.413 12l2.125-2.125c.38-.38.386-1.02-.004-1.41-.394-.394-1.023-.393-1.41-.004L12 10.587zM0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12z"></path>
         </svg>
       </button>
@@ -98,6 +171,7 @@
 
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/vendor/jquery.scrollbar.min.js"></script>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>

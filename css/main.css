@@ -239,7 +239,6 @@ audio,
 canvas,
 iframe,
 img,
-svg,
 video {
   vertical-align: middle;
 }
@@ -433,22 +432,22 @@ h4 {
   line-height: 1.3;
 }
 
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-html {
-  color: #17181a;
-  background-color: #F7F9FA;
-  font-size: 1em;
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
+.button {
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px 32px;
+  border-radius: 20px;
+  text-align: center;
+  background: #5268FF;
+  color: #fff;
 }
-
-body {
-  overflow: hidden;
+.button:hover, .button:focus {
+  background-color: #3741D9;
+}
+.button:disabled {
+  background-color: #babcbf;
+  cursor: default;
 }
 
 /* Main nav */
@@ -561,6 +560,206 @@ body {
   background: #F7F9FA;
 }
 
+.transfer-window {
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1), 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-radius: 10px;
+  width: 280px;
+  height: 410px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 80px;
+}
+
+.transfer-window__content {
+  width: 100%;
+  height: 338px;
+  overflow-y: auto;
+}
+
+.uploader {
+  height: 120px;
+}
+.uploader:hover .uploader-trigger__icon path, .uploader:focus .uploader-trigger__icon path {
+  fill: #3741D9;
+}
+
+.uploader-form {
+  display: none;
+}
+
+.uploader-trigger {
+  height: 100%;
+  position: relative;
+  padding-left: 66px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.uploader-trigger__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  width: 36px;
+  height: 36px;
+}
+.uploader-trigger__icon path {
+  transition: all 0.25s cubic-bezier(0.77, 0, 0.175, 1);
+  fill: #5268FF;
+}
+
+.uploader-trigger__subtitle {
+  transition: all 0.25s cubic-bezier(0.77, 0, 0.175, 1);
+  text-decoration: underline;
+  font-size: 14px;
+  color: #484A4C;
+}
+.uploader-trigger__subtitle:hover, .uploader-trigger__subtitle:focus {
+  color: #5268FF;
+}
+
+.uploader-fields {
+  width: 100%;
+  padding: 0 10px;
+  border-top: 1px solid #D4D7D9;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.uploader-field {
+  position: relative;
+  height: 48px;
+}
+.uploader-field:not(:first-child) {
+  border-top: 1px solid #D4D7D9;
+}
+.uploader-field label {
+  transition: all 0.25s cubic-bezier(0.77, 0, 0.175, 1);
+  color: #6A6D70;
+  font-size: 14px;
+  line-height: 20px;
+  position: absolute;
+  transform: translateY(14px);
+  left: 12px;
+  pointer-events: none;
+}
+.uploader-field input,
+.uploader-field textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 16px 20px 0 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.uploader-field input:focus,
+.uploader-field textarea:focus {
+  outline: none;
+}
+.uploader-field input:focus + label, .uploader-field input:not(:placeholder-shown) + label,
+.uploader-field textarea:focus + label,
+.uploader-field textarea:not(:placeholder-shown) + label {
+  font-size: 12px;
+  transform: translateY(5px);
+}
+.uploader-field textarea {
+  transition: all 0.25s cubic-bezier(0.77, 0, 0.175, 1);
+  font-family: inherit;
+  resize: none;
+  overflow: hidden;
+  padding-top: 22px;
+}
+.uploader-field textarea:not(:placeholder-shown):not(:focus) {
+  padding-top: 16px;
+}
+.uploader-field textarea:not(:placeholder-shown):not(:focus) + label {
+  opacity: 0;
+}
+
+.uploader__message {
+  height: auto;
+  flex-grow: 1;
+  display: grid;
+}
+.uploader__message::after {
+  content: attr(data-replicated-value) " ";
+  white-space: pre-wrap;
+  visibility: hidden;
+  font-size: 14px;
+  padding: 16px 20px 12px 12px;
+}
+.uploader__message > textarea, .uploader__message::after {
+  /* Place on top of each other */
+  grid-area: 1/1/2/2;
+}
+
+.transfer-window__options {
+  transition: all 0.25s cubic-bezier(0.77, 0, 0.175, 1);
+  background-color: #F7F9FA;
+  border-top: 1px solid #D4D7D9;
+  display: none;
+}
+.transfer-window__options.transfer-options--active {
+  display: block;
+}
+
+.transfer-window__footer {
+  width: 100%;
+  height: 72px;
+  border-top: 1px solid #D4D7D9;
+  padding: 0 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transfer-options-trigger {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+}
+.transfer-options-trigger:hover path, .transfer-options-trigger:focus path {
+  fill: #3741D9;
+}
+.transfer-options-trigger path {
+  fill: #5268FF;
+}
+.transfer-options-trigger span {
+  display: none;
+}
+
+.transfer-button {
+  width: 160px;
+}
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html {
+  color: #17181a;
+  background-color: #F7F9FA;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+body {
+  overflow: hidden;
+}
+
 /* Panel */
 .panel {
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1), -10px 5px 30px 0 rgba(0, 0, 0, 0.2);
@@ -607,6 +806,48 @@ body {
 
 .panel-content {
   padding: 45px 80px 100px;
+}
+
+.scrollbar-wrapper {
+  overflow: hidden;
+}
+
+.scrollbar-y {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.scrollbar-y.scroll-scrolly_visible {
+  display: block;
+  right: 2px;
+  top: 10px;
+  bottom: 10px;
+  width: 4px;
+  height: calc(100% - 20px);
+}
+
+.scrollbar-y div {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.scrollbar-y .scroll-bar {
+  background: #9999fc;
+  z-index: 12;
+  height: 160px;
+  border-radius: 4px;
+  background: #000;
+  opacity: 0.2;
+}
+
+.scroll-wrapper > .scroll-content::-webkit-scrollbar {
+  height: 0;
+  width: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
