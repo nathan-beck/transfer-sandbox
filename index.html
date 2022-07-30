@@ -71,27 +71,28 @@
   <div class="transfer-window scrollbar-wrapper">
     <div class="scrollbar-y">
       <div class="scroll-element_outer">
-          <div class="scroll-element_size"></div>
-          <div class="scroll-element_track"></div>
-          <div class="scroll-bar"></div>
+        <div class="scroll-element_size"></div>
+        <div class="scroll-element_track"></div>
+        <div class="scroll-bar"></div>
       </div>
     </div>
 
     <div class="transfer-window__content scrollbar-content">
 
-      <div class="uploader">
+      <div class="uploader" id="uploader">
         <form action="" id="uploader-form" class="uploader-form">
-          <input type="file" multiple>
+          <input id="uploader-form__files" type="file" multiple>
+          <input id="uploader-form__folders" tabindex="-1" type="file" multiple webkitdirectory="webkitdirectory" directory="directory">
         </form>
 
-        <div class="uploader-trigger">
+        <div class="uploader-trigger" id="uploader__select-files">
           <svg class="uploader-trigger__icon" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72" fill="none">
             <path d="M36.493 72C16.118 72 0 55.883 0 36.493 0 16.118 16.118 0 36.493 0 55.882 0 72 16.118 72 36.493 72 55.882 55.883 72 36.493 72zM34 34h-9c-.553 0-1 .452-1 1.01v1.98A1 1 0 0 0 25 38h9v9c0 .553.452 1 1.01 1h1.98A1 1 0 0 0 38 47v-9h9c.553 0 1-.452 1-1.01v-1.98A1 1 0 0 0 47 34h-9v-9c0-.553-.452-1-1.01-1h-1.98A1 1 0 0 0 34 25v9z" fill="#409fff" fill-rule="nonzero"></path>
           </svg>
           
           <h2>Upload files</h2>
           
-          <button class="uploader-trigger__subtitle">Or select a folder</button>
+          <button class="uploader-trigger__subtitle" id="uploader__select-folder">Or select a folder</button>
         </div>
       </div>
 

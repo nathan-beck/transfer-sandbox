@@ -63,6 +63,20 @@ $(document).ready(function () {
     }        
   });
 
+  // Transfer window uploader
+  const $uploader = $('#uploader');
+  const $uploaderForm = $('#uploader-form');
+  
+  // Trigger files uploader
+  $('#uploader__select-files').click(function() {
+    $('#uploader-form__files').click();
+  });
+
+  // Trigger directory uploader
+  $('#uploader__select-folder').click(function() {
+    $('#uploader-form__folders').click();
+  });
+
   // Transfer window options
   const $transferOptionsTrigger = $('.transfer-options-trigger');
   const $transferOptions = $('.transfer-window__options');
