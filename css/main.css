@@ -610,6 +610,7 @@ p:first-child {
   border-radius: 10px;
   overflow: hidden;
   width: 280px;
+  height: 410px;
 }
 
 .transfer-window {
