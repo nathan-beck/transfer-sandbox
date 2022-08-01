@@ -124,12 +124,12 @@ $(document).ready(function () {
   });
 
   // Custom scrollbars
-  const $scrollable = $('.scrollbar-content');
+  // const $scrollable = $('.scrollbar-content');
 
-  $scrollable.scrollbar({
-    "autoScrollSize": false,
-    "scrolly": $('.scrollbar-y')
-  });
+  // $scrollable.scrollbar({
+  //   "autoScrollSize": false,
+  //   "scrolly": $('.scrollbar-y')
+  // });
 
   // Transfer completion state
   const $transferButton = $('.transfer-button');
