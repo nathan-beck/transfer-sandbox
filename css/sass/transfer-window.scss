@@ -1,15 +1,27 @@
 // Transfer window
 
-.transfer-window {
+.transfer-window-container {
   @include shadow-transfer-window;
-  background: $color-white;
-  border-radius: 10px;
-  width: 280px;
-  height: 410px;
+  @include transition-drawer;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 80px;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 280px;
+}
+
+.transfer-window {
+  @include shadow-transfer-window;
+  transform: border-radius .3s;
+  background: $color-white;
+  border-radius: 10px;
+  flex: 280px 0 0;
+  height: 410px;
+  position: relative;
+  overflow: hidden;
 }
 
 .transfer-window__content {
@@ -61,6 +73,10 @@
   }
 }
 
+.uploader-trigger__title {
+  font-weight: $font-weight-regular;
+}
+
 .uploader-trigger__subtitle {
   @include transition-general;
   text-decoration: underline;
@@ -74,6 +90,7 @@
 }
 
 // Uploader fields
+
 .uploader-fields {
   width: 100%;
   padding: 0 10px;
@@ -212,4 +229,203 @@
 
 .transfer-button {
   width: 160px;
+}
+
+// Completion state
+
+.transfer-complete {
+  @include transition-general;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: $color-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  opacity: 0;
+  z-index: -1;
+
+  .transfer--complete & {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.transfer-complete video {
+  width: 170px;
+  height: 170px;
+}
+
+.transfer-complete__content {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.transfer-complete__content h3 {
+  font-size: 20px;
+  font-weight: $font-weight-medium;
+  margin-bottom: 8px;
+}
+
+
+.transfer-complete__content p {
+  font-size: $font-size-m;
+  color: $color-abbey;
+}
+
+.transfer-complete__content a {
+  color: $color-primary;
+  font-size: $font-size-m;
+
+  &:hover,
+  &:focus {
+    color: $color-primary-active;
+  }
+}
+
+.transfer-complete__actions {
+  margin-top: 16px;
+}
+
+
+// Discovery drawer
+
+$drawer-delay: 1.4s; // Matches setTimeout in js
+
+.discovery-drawer {
+  @include shadow-transfer-window;
+  @include transition-drawer;
+  flex: 600px 0 0;
+  border-radius: 0 10px 10px 0;
+  overflow: hidden;
+  background: $color-white;
+  z-index: -1;
+  display: flex;
+  transform: translate(-100%, 0);
+  transform-origin: left;
+}
+
+.drawer--active {
+  width: 880px;
+
+  .transfer-window {
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .discovery-drawer {
+    transform: translate(0, 0);
+  }
+
+  .discovery-drawer__content > * {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .drawer-graphic__background {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  .drawer-graphic__tile {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+.discovery-drawer__content {
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.discovery-drawer__content > * {
+  opacity: 0;
+  transform: translate(0, 10px);
+  transition: all .6s ease;
+}
+
+@for $i from 1 through 5 { // Increment delay on drawer content children
+  .discovery-drawer__content > *:nth-child(#{$i}n) {
+    transition-delay: #{1 + ($i * 0.1)}s;
+  }
+}
+
+.discovery-drawer__description {
+  flex-grow: 1;
+  font-size: $font-size-m;
+  color: $color-abbey;
+}
+
+.discovery-drawer__checklist {
+  margin-top: 1.5em;
+}
+
+.discovery-drawer__actions {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.drawer-graphic {
+  flex: 250px 0 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.drawer-graphic__background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('../img/drawer-graphic__background.svg');
+  transform: translate(40px, 0);
+  opacity: 0;
+  transform-origin: right;
+  transition: all 1.2s .8s ease;
+}
+
+.drawer-graphic__tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.drawer-graphic__tile {
+  width: 230px;
+  height: 64px;
+  display: block;
+  background-size: 100%;
+  border-radius: 5px 0 0 5px;
+  overflow: hidden;
+  box-shadow: -3px 6px 12px rgb(0 0 0 / 10%);
+  transform: translate(20px, 0);
+  opacity: 0;
+  transform-origin: right;
+  transition: all .6s ease;
+
+  &:nth-child(1) {
+    background-image: url('../img/drawer-graphic__transfer--top.png');
+    transition-delay: .6s;
+  }
+
+  &:nth-child(2) {
+    background-image: url('../img/drawer-graphic__transfer--middle.png');
+    transition-delay: .7s;
+  }
+
+  &:nth-child(3) {
+    background-image: url('../img/drawer-graphic__transfer--bottom.png');
+    transition-delay: .8s;
+  }
 }

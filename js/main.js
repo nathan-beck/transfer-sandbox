@@ -7,9 +7,11 @@ $(document).ready(function () {
   // Close panel
   $('.panel-close').on('click', function() {
     var $parentPanel = $(this).parents($panel);
+    var $this = $(this);
     
     if($parentPanel.hasClass('panel--open')) {
       $parentPanel.removeClass('panel--open');
+      $this.attr('tabindex', '-1');
     }
   });
 
@@ -25,6 +27,7 @@ $(document).ready(function () {
       // Open panel
       if(!$panel.hasClass('panel--open')) {
         $panel.addClass('panel--open');
+        $('.panel-close').attr('tabindex', '0');
       }
 
       // Hide all panel content
@@ -40,13 +43,16 @@ $(document).ready(function () {
   // Account nav
   const $accountNavTrigger = $('.account-nav-trigger');
   const $accountNav = $('.account-nav');
+  var $accountNavLink = $('.account-nav__item > a');
 
   $accountNavTrigger.on('click', function() {
     // Toggle active class
     if($accountNav.hasClass('account-nav--active')) {
       $accountNav.removeClass('account-nav--active');
+      $accountNavLink.attr('tabIndex', '-1'); // Remove from tabbing order
     } else {
       $accountNav.addClass('account-nav--active');
+      $accountNavLink.attr('tabIndex', '0'); // Add back into tabbing order
     }
   });
 
@@ -59,9 +65,12 @@ $(document).ready(function () {
       // If the nav is active, deactivate it
       if($accountNav.hasClass('account-nav--active')) {
         $accountNav.removeClass('account-nav--active');
+        $accountNavLink.attr('tabIndex', '-1'); // Remove from tabbing order
       }
     }        
   });
+
+  // Assign tabIndex only on active nav
 
   // Transfer window uploader
   const $uploader = $('#uploader');
@@ -120,5 +129,34 @@ $(document).ready(function () {
   $scrollable.scrollbar({
     "autoScrollSize": false,
     "scrolly": $('.scrollbar-y')
+  });
+
+  // Transfer completion state
+  const $transferButton = $('.transfer-button');
+  const $transferWindowContainer = $('.transfer-window-container');
+  const $discoveryDrawer = $('.discovery-drawer');
+  const $drawerDelay = 1400;
+  
+  $transferButton.on('click', function() {
+    if(!$transferWindowContainer.hasClass('transfer--complete')) {
+
+      // Show completion state
+      $transferWindowContainer.addClass('transfer--complete');
+
+      // Discovery drawer
+      if(!$transferWindowContainer.hasClass('drawer--active')) {
+        setTimeout(function() {
+          $transferWindowContainer.addClass('drawer--active');
+          $('a', $discoveryDrawer).attr('tabIndex', '0'); // Add back into tabbing order
+        }, $drawerDelay);
+      }
+    }
+  });
+
+  // Close drawer
+  $('.close-drawer').on('click', function() {
+    if($transferWindowContainer.hasClass('drawer--active')) {
+      $transferWindowContainer.removeClass('drawer--active');
+    }
   });
 });

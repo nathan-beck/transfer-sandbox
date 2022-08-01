@@ -23,5 +23,13 @@
 }
 
 @mixin transition-general {
-  transition: all .25s cubic-bezier(.77,0,.175,1);
+  transition: all .3s cubic-bezier(.77,0,.175,1);
+}
+
+@mixin transition-button {
+  transition: color .1s linear, background-color .1s linear;
+}
+
+@mixin transition-drawer {
+  transition: all .8s cubic-bezier(.3,0,.3,1);
 }

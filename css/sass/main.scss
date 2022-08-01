@@ -44,7 +44,22 @@ body {
   }
 }
 
-/* Panel */
+// Checklists
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checklist__item {
+  display: block;
+  padding-left: 20px;
+  background: url('../img/checkmark.svg') no-repeat top 3px left;
+}
+
+
+// Panel
 
 .panel {
   @include shadow-panel;
@@ -96,6 +111,7 @@ body {
 .panel-content {
   padding: 45px 80px 100px;
 }
+
 
 // Scrollable areas
 

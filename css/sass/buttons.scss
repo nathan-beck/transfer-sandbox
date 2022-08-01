@@ -18,3 +18,37 @@
     cursor: default;
   }
 }
+
+.block-button {
+  @include transition-button;
+  display: block;
+  font-size: $font-size-m;
+  font-weight: $font-weight-medium;
+  line-height: 20px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  text-align: center;
+  background: $color-primary;
+  color: $color-white;
+
+  &:hover,
+  &:focus {
+    background-color: $color-primary-active;
+  }
+
+  &:disabled {
+    background-color: $color-silver;
+    cursor: default;
+  }
+}
+
+.block-button--tertiary {
+  background-color: transparent;
+  color: $color-primary;
+
+  &:hover,
+  &:focus {
+    background-color: $color-aqua;
+    color: $color-primary-active;
+  }
+}
