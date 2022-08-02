@@ -135,7 +135,7 @@ $(document).ready(function () {
   const $transferButton = $('.transfer-button');
   const $transferWindowContainer = $('.transfer-window-container');
   const $discoveryDrawer = $('.discovery-drawer');
-  const $drawerDelay = 1400;
+  const $drawerDelay = 800;
   
   $transferButton.on('click', function() {
     if(!$transferWindowContainer.hasClass('transfer--complete')) {
