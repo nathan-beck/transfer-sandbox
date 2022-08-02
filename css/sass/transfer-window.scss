@@ -295,8 +295,6 @@
 
 // Discovery drawer
 
-$drawer-delay: 1.4s; // Matches setTimeout in js
-
 .discovery-drawer {
   @include shadow-transfer-window;
   @include transition-drawer;
@@ -348,12 +346,12 @@ $drawer-delay: 1.4s; // Matches setTimeout in js
 .discovery-drawer__content > * {
   opacity: 0;
   transform: translate(0, 10px);
-  transition: all .6s ease;
+  transition: all .6s cubic-bezier(.65,.01,.25,1.5);
 }
 
 @for $i from 1 through 5 { // Increment delay on drawer content children
   .discovery-drawer__content > *:nth-child(#{$i}n) {
-    transition-delay: #{1 + ($i * 0.1)}s;
+    transition-delay: #{.8 + ($i * 0.1)}s;
   }
 }
 
@@ -391,7 +389,7 @@ $drawer-delay: 1.4s; // Matches setTimeout in js
   transform: translate(40px, 0);
   opacity: 0;
   transform-origin: right;
-  transition: all 1.2s .8s ease;
+  transition: all 1.2s .6s ease;
 }
 
 .drawer-graphic__tiles {
@@ -403,7 +401,7 @@ $drawer-delay: 1.4s; // Matches setTimeout in js
 }
 
 .drawer-graphic__tile {
-  width: 230px;
+  width: 240px;
   height: 64px;
   display: block;
   background-size: 100%;
@@ -413,16 +411,16 @@ $drawer-delay: 1.4s; // Matches setTimeout in js
   transform: translate(20px, 0);
   opacity: 0;
   transform-origin: right;
-  transition: all .6s ease;
+  transition: all .6s cubic-bezier(.65,.01,.25,1.5);
 
   &:nth-child(1) {
     background-image: url('../img/drawer-graphic__transfer--top.png');
-    transition-delay: .6s;
+    transition-delay: .4s;
   }
 
   &:nth-child(2) {
     background-image: url('../img/drawer-graphic__transfer--middle.png');
-    transition-delay: .7s;
+    transition-delay: .6s;
   }
 
   &:nth-child(3) {
