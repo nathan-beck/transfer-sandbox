@@ -183,8 +183,8 @@ select {
     scroll-behavior: auto;
   }
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -356,8 +356,8 @@ textarea {
    ========================================================================== */
 @media print {
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     background: #fff !important;
     color: #000 !important;
     /* Black prints faster */
@@ -365,7 +365,7 @@ textarea {
     text-shadow: none !important;
   }
   a,
-a:visited {
+  a:visited {
     text-decoration: underline;
   }
   a[href]::after {
@@ -379,14 +379,14 @@ a:visited {
    * or use the `javascript:` pseudo protocol
    */
   a[href^="#"]::after,
-a[href^="javascript:"]::after {
+  a[href^="javascript:"]::after {
     content: "";
   }
   pre {
     white-space: pre-wrap !important;
   }
   pre,
-blockquote {
+  blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
@@ -398,17 +398,17 @@ blockquote {
     display: table-header-group;
   }
   tr,
-img {
+  img {
     page-break-inside: avoid;
   }
   p,
-h2,
-h3 {
+  h2,
+  h3 {
     orphans: 3;
     widows: 3;
   }
   h2,
-h3 {
+  h3 {
     page-break-after: avoid;
   }
 }
@@ -585,17 +585,21 @@ p:first-child {
   display: none;
 }
 
-.account-nav__item a {
+.account-nav__item a,
+.account-nav__item button {
   padding: 5px 20px;
   color: #17181a;
   display: block;
   text-decoration: none;
+  width: 100%;
   height: 35px;
   line-height: 25px;
+  text-align: left;
   font-size: 14px;
   font-weight: 600;
 }
-.account-nav__item a:hover {
+.account-nav__item a:hover,
+.account-nav__item button:hover {
   background: #F7F9FA;
 }
 
@@ -1050,6 +1054,23 @@ body {
   width: 100%;
   max-width: 880px;
 }
+@media only screen and (max-width: 54rem) {
+  .panel {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
+
+.panel--full {
+  width: calc(100vw - 6rem);
+  max-width: 100%;
+}
+@media only screen and (max-width: 54rem) {
+  .panel--full {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
 
 .panel--open {
   transform: translate3d(0, 0, 0);
@@ -1081,6 +1102,43 @@ body {
 
 .panel-content {
   padding: 45px 80px 100px;
+}
+
+.full-panel-content {
+  width: 100%;
+  margin: 3.5rem auto 7.5rem;
+  max-width: 77.5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  display: flex;
+  gap: 5rem;
+}
+@media only screen and (max-width: 83.5rem) {
+  .full-panel-content {
+    gap: 2.5rem;
+  }
+}
+@media only screen and (max-width: 54rem) {
+  .full-panel-content {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+.full-panel-body {
+  flex-grow: 1;
+  background-color: #E8EBED;
+}
+
+.full-panel-aside {
+  flex-grow: 0;
+  flex-basis: 16rem;
+  background-color: #E8EBED;
+}
+@media only screen and (max-width: 71rem) {
+  .full-panel-aside {
+    display: none;
+  }
 }
 
 .scrollbar-wrapper {

@@ -3,6 +3,7 @@ $(document).ready(function () {
 
   // Panel actions
   const $panel = $('.panel');
+  const $fullPanel = $('.panel--full');
 
   // Close panel
   $('.panel-close').on('click', function() {
@@ -15,8 +16,9 @@ $(document).ready(function () {
     }
   });
 
-  // Main nav
+  // Show and hide panels
   const $mainNav = $('.main-nav__items');
+  const $accountNavItems = $('.account-nav__items');
 
   $('button', $mainNav).on('click', function() {
     // Get desired content value
@@ -38,12 +40,46 @@ $(document).ready(function () {
       //Show correct panel content
       $('[data-content="' + $desiredPanel + '"]', $panel).show();
     }
+    
+    // If the account nav is active, deactivate it
+    if($accountNav.hasClass('account-nav--active')) {
+      $accountNav.removeClass('account-nav--active');
+      $accountNavLink.attr('tabIndex', '-1'); // Remove from tabbing order
+    }
+
+    // If full panel, hide transfer window
+    if($desiredPanel.hasClass('panel--full')) {
+      console.log('hide window');
+    }
+  });
+
+  $('button', $accountNavItems).on('click', function() {
+    // Get desired content value
+    var $desiredPanel = $(this).attr('data-destination');
+
+    // Open panel
+    if(!$fullPanel.hasClass('panel--open')) {
+      $fullPanel.addClass('panel--open');
+      $('.panel-close').attr('tabindex', '0');
+    }
+
+    // Hide all panel content
+    $('.panel-content', $panel).each(function() {
+      $(this).hide();
+    });
+
+    //Show correct panel content
+    $('[data-content="' + $desiredPanel + '"]', $panel).show();
+    
+    // Deactivate account nav
+    $accountNav.removeClass('account-nav--active');
+    $accountNavLink.attr('tabIndex', '-1'); // Remove from tabbing order
   });
 
   // Account nav
   const $accountNavTrigger = $('.account-nav-trigger');
   const $accountNav = $('.account-nav');
-  var $accountNavLink = $('.account-nav__item > a');
+  var $accountNavLink = $('.account-nav__item > a, .account-nav__item > button');
 
   $accountNavTrigger.on('click', function() {
     // Toggle active class

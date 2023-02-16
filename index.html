@@ -55,8 +55,12 @@
 
   <nav class="account-nav">
     <ul class="account-nav__items">
-      <li class="account-nav__item"><a href="#" tabindex="-1">Account</a></li>
-      <li class="account-nav__item"><a href="#" tabindex="-1">Invite team</a></li>
+      <li class="account-nav__item">
+        <button data-destination="workspace-settings" tabindex="-1">Workspace</button>
+      </li>
+      <li class="account-nav__item">
+        <a href="#" tabindex="-1">Account</a>
+      </li>
     </ul>
 
     <ul class="account-nav__items">
@@ -219,7 +223,29 @@
       </div>
     </div>
   </div>
+
+  <!-- Full panel -->
   
+  <div class="panel panel--full">
+    <div class="panel-topbar">
+      <button type="button" class="panel-close" aria-label="Close panel" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path fill="#babcbf" fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10 10-4.477 10-10zm-10-1.414L9.875 8.46c-.38-.38-1.02-.386-1.41.004-.394.394-.393 1.023-.004 1.41L10.587 12 8.46 14.125c-.38.38-.386 1.02.004 1.41.394.394 1.023.393 1.41.004L12 13.413l2.125 2.125c.38.38 1.02.386 1.41-.004.394-.394.393-1.023.004-1.41L13.413 12l2.125-2.125c.38-.38.386-1.02-.004-1.41-.394-.394-1.023-.393-1.41-.004L12 10.587zM0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="panel-scrollable-area">
+      <div class="full-panel-content" data-content="workspace-settings">
+        <div class="full-panel-body">
+          <h1 class="panel-title">Workspace settings</h1>
+        </div>
+        <aside class="full-panel-aside">
+
+        </aside>
+      </div>
+    </div>
+  </div>
 
   <!-- Main content goes here -->
 
