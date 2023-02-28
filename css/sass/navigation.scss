@@ -126,3 +126,17 @@
     }
   }
 }
+
+/* Panel aside nav */
+
+.panel-aside-menu {
+  margin-bottom: 2rem;
+
+  li {
+    padding: 1rem 0;
+    border-bottom: 1px solid $color-porcelain;
+    font-size: $font-size-l;
+    line-height: 1.25rem;
+    color: $color-abbey;
+  }
+}

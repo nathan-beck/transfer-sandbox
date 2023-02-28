@@ -3,6 +3,7 @@ $(document).ready(function () {
 
   // Panel actions
   const $panel = $('.panel');
+  const $halfPanel = $('.panel--half');
   const $fullPanel = $('.panel--full');
 
   // Close panel
@@ -26,9 +27,14 @@ $(document).ready(function () {
 
     // Exclude portals button from following function
     if($desiredPanel != 'portals') {
+      // Close full panel if open
+      if($fullPanel.hasClass('panel--open')) {
+        $fullPanel.removeClass('panel--open');
+      }
+
       // Open panel
-      if(!$panel.hasClass('panel--open')) {
-        $panel.addClass('panel--open');
+      if(!$halfPanel.hasClass('panel--open')) {
+        $halfPanel.addClass('panel--open');
         $('.panel-close').attr('tabindex', '0');
       }
 
@@ -56,6 +62,11 @@ $(document).ready(function () {
   $('button', $accountNavItems).on('click', function() {
     // Get desired content value
     var $desiredPanel = $(this).attr('data-destination');
+
+    // Close half panel if open
+    if($halfPanel.hasClass('panel--open')) {
+      $halfPanel.removeClass('panel--open');
+    }
 
     // Open panel
     if(!$fullPanel.hasClass('panel--open')) {

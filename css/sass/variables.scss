@@ -29,3 +29,16 @@ $font-size-h4: 16px;
 $font-size-h3: 18px;
 $font-size-h2: 20px;
 $font-size-h1: 40px;
+
+/* Responsive */
+
+$panel-offset: 6rem;
+
+// 1336px
+$breakpoint-large: "only screen and (max-width: calc(77.5rem + 6rem))";
+
+// 1136px
+$breakpoint-medium: "only screen and (max-width: calc(65rem + 6rem))";
+
+// 864px
+$breakpoint-small: "only screen and (max-width: calc(48rem + 6rem))";
