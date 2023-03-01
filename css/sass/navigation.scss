@@ -132,11 +132,19 @@
 .panel-aside-menu {
   margin-bottom: 2rem;
 
+  @media #{$breakpoint-m} {
+    margin: 0;
+  }
+
   li {
     padding: 1rem 0;
     border-bottom: 1px solid $color-porcelain;
     font-size: $font-size-l;
     line-height: 1.25rem;
     color: $color-abbey;
+  }
+
+  .menu-item--active {
+    font-weight: $font-weight-bold;
   }
 }

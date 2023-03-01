@@ -193,7 +193,10 @@ select {
 }
 /* Colors */
 /* Typography */
-/* Responsive */
+/*
+Breakpoints:
+[Screen width] / [Panel width]
+*/
 /* Shadows */
 /* Transitions */
 /*
@@ -619,12 +622,20 @@ p:first-child {
 .panel-aside-menu {
   margin-bottom: 2rem;
 }
+@media only screen and (max-width: calc(65rem + 6rem)) {
+  .panel-aside-menu {
+    margin: 0;
+  }
+}
 .panel-aside-menu li {
   padding: 1rem 0;
   border-bottom: 1px solid #E8EBED;
   font-size: 16px;
   line-height: 1.25rem;
   color: #484A4C;
+}
+.panel-aside-menu .menu-item--active {
+  font-weight: 700;
 }
 
 .transfer-window-container {
@@ -1156,7 +1167,17 @@ body {
     gap: 2.5rem;
   }
 }
+@media only screen and (max-width: calc(65rem + 6rem)) {
+  .full-panel-content {
+    flex-direction: column;
+  }
+}
 @media only screen and (max-width: calc(48rem + 6rem)) {
+  .full-panel-content {
+    padding: 2.5rem;
+  }
+}
+@media only screen and (max-width: 28rem) {
   .full-panel-content {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -1178,6 +1199,12 @@ body {
 }
 @media only screen and (max-width: calc(65rem + 6rem)) {
   .full-panel-aside {
+    order: -1;
+    padding-top: 0;
+  }
+}
+@media only screen and (max-width: calc(65rem + 6rem)) {
+  .full-panel-aside h3 {
     display: none;
   }
 }
