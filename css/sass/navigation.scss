@@ -129,11 +129,34 @@
 
 /* Panel aside nav */
 
+.panel-aside-nav {
+  @media #{$breakpoint-l} {
+    margin: -3.5rem -5rem 0;
+    display: flex;
+    gap: 2rem;
+    padding: 0 5rem;
+    box-shadow: 0 -1px 0 inset $color-iron;
+    overflow-x: auto;
+  }
+
+  @media #{$breakpoint-m} {
+    margin-top: -2.5rem;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.panel-aside-nav::-webkit-scrollbar {
+  display: none;
+}
+
 .panel-aside-menu {
   margin-bottom: 2rem;
 
   @media #{$breakpoint-l} {
     margin: 0;
+    display: flex;
+    gap: 2rem;
+    flex-shrink: 0;
   }
 
   li {
@@ -142,9 +165,20 @@
     font-size: $font-size-l;
     line-height: 1.25rem;
     color: $color-abbey;
+
+    @media #{$breakpoint-l} {
+      border: none;
+      flex-shrink: 0;
+      padding: 1.25rem 0.5rem;
+      line-height: 1.5rem;
+    }
   }
 
   .menu-item--active {
     font-weight: $font-weight-bold;
+
+    @media #{$breakpoint-l} {
+      border-bottom: 2px solid $color-woodsmoke;
+    }
   }
 }

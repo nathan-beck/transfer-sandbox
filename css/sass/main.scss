@@ -186,6 +186,7 @@ body {
   @media #{$breakpoint-l} {
     order: -1;
     padding-top: 0;
+    flex-basis: auto;
   }
 
   h3 {
